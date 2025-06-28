@@ -1,0 +1,88 @@
+[INFO] Encontradas 11 imágenes en el directorio 'concept'.
+[INFO] Encontradas 1 imágenes en el directorio 'no-concept'.
+[INFO] Datos divididos: 9 para entrenamiento, 3 para validación.
+[INFO] Modelo compilado (simulado) con 'adam' y 'binary_crossentropy'.
+[INFO] --- Resumen del Modelo (Simulado) ---
+[INFO]   - Capa: Conv2D, Config: {
+  "type": "Conv2D",
+  "filters": 32,
+  "kernelSize": [
+    3,
+    3
+  ],
+  "activation": "relu"
+}
+[INFO]   - Capa: MaxPooling2D, Config: {
+  "type": "MaxPooling2D",
+  "poolSize": [
+    2,
+    2
+  ]
+}
+[INFO]   - Capa: Conv2D, Config: {
+  "type": "Conv2D",
+  "filters": 64,
+  "kernelSize": [
+    3,
+    3
+  ],
+  "activation": "relu"
+}
+[INFO]   - Capa: MaxPooling2D, Config: {
+  "type": "MaxPooling2D",
+  "poolSize": [
+    2,
+    2
+  ]
+}
+[INFO]   - Capa: Flatten, Config: {
+  "type": "Flatten"
+}
+[INFO]   - Capa: Dense, Config: {
+  "type": "Dense",
+  "units": 128,
+  "activation": "relu"
+}
+[INFO]   - Capa: Dense, Config: {
+  "type": "Dense",
+  "units": 1,
+  "activation": "sigmoid"
+}
+[INFO] ------------------------------------
+[INFO] Modelo CNN construido y compilado exitosamente (simulado).
+[INFO] Iniciando el proceso de entrenamiento (simulado)...
+[INFO] --- Iniciando Época 1/10 ---
+[INFO] Época 1 completada. Pérdida: 0.6546, Precisión: 0.6068. Tiempo: 0.00s
+[INFO] --- Iniciando Época 2/10 ---
+[INFO] Época 2 completada. Pérdida: 0.5005, Precisión: 0.6537. Tiempo: 0.00s
+[INFO] --- Iniciando Época 3/10 ---
+[INFO] Época 3 completada. Pérdida: 0.4325, Precisión: 0.7267. Tiempo: 0.00s
+[INFO] --- Iniciando Época 4/10 ---
+[INFO] Época 4 completada. Pérdida: 0.3481, Precisión: 0.7617. Tiempo: 0.00s
+[INFO] --- Iniciando Época 5/10 ---
+[INFO] Época 5 completada. Pérdida: 0.2668, Precisión: 0.7880. Tiempo: 0.00s
+[INFO] --- Iniciando Época 6/10 ---
+[INFO] Época 6 completada. Pérdida: 0.2155, Precisión: 0.8185. Tiempo: 0.00s
+[INFO] --- Iniciando Época 7/10 ---
+[INFO] Época 7 completada. Pérdida: 0.1775, Precisión: 0.8515. Tiempo: 0.00s
+[INFO] --- Iniciando Época 8/10 ---
+[INFO] Época 8 completada. Pérdida: 0.1380, Precisión: 0.8822. Tiempo: 0.00s
+[INFO] --- Iniciando Época 9/10 ---
+[INFO] Época 9 completada. Pérdida: 0.1146, Precisión: 0.8945. Tiempo: 0.00s
+[INFO] --- Iniciando Época 10/10 ---
+[INFO] Época 10 completada. Pérdida: 0.1007, Precisión: 0.9122. Tiempo: 0.00s
+[INFO] Entrenamiento simulado finalizado.
+[INFO] Modelo simulado guardado en 'models/simulated_model.json'.
+[INFO] 
+--- Resumen de la Tarea (Deno) ---
+Épocas completadas: 10
+Pérdida final simulada: 0.1007
+Precisión final simulada: 0.9122
+Tiempo total de ejecución: 0.00 segundos
+Modelo guardado en: models/simulated_model.json
+------------------------------------
+
+[INFO] Iniciando fase de inferencia de ejemplo (simulada)...
+[INFO] Cargando modelo (simulado) desde: models/simulated_model.json
+[INFO] Arquitectura del modelo cargada exitosamente.
+[INFO] La predicción para './extra/no-concept.jpeg' es: 0
