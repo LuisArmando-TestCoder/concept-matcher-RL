@@ -1,0 +1,12 @@
+[
+  {
+    "imageSrc": "https://this-person-does-not-exist.com/static/images/fake-1.jpg",
+    "foundOn": "https://this-person-does-not-exist.com/",
+    "savedTo": "data/this-person-doesnt-exists/coincidences/fake-1.jpg"
+  },
+  {
+    "imageSrc": "https://this-person-does-not-exist.com/static/images/fake-2.jpg",
+    "foundOn": "https://this-person-does-not-exist.com/",
+    "savedTo": "data/this-person-doesnt-exists/coincidences/fake-2.jpg"
+  }
+]

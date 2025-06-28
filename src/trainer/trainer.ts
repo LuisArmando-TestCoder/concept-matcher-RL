@@ -26,6 +26,7 @@ export async function trainModel(
   valData: ImageItem[],
   epochs = 10,
   batchSize = 32,
+  modelPath = "models/simulated_model.json",
 ): Promise<TrainingHistory> {
   log.info("Iniciando el proceso de entrenamiento (simulado)...");
 
@@ -58,8 +59,8 @@ export async function trainModel(
   
   // Guardar el "modelo" (en este caso, podríamos guardar la arquitectura)
   const modelJson = JSON.stringify(model.architecture, null, 2);
-  await Deno.writeTextFile("models/simulated_model.json", modelJson);
-  log.info("Modelo simulado guardado en 'models/simulated_model.json'.");
+  await Deno.writeTextFile(modelPath, modelJson);
+  log.info(`Modelo simulado guardado en '${modelPath}'.`);
 
   return {
     epochs: epochs,

@@ -13,42 +13,71 @@ Therefore, this project **simulates** the machine learning workflow:
 
 The primary goal is to showcase a well-structured, modular Deno application that follows the same design principles as the Go and Python versions.
 
-## How to Run the Project
+## Workflow
 
-1.  **Install Deno:**
-    If you don't have Deno installed, follow the official instructions at [https://deno.com/manual/getting_started/installation](https://deno.com/manual/getting_started/installation).
+This project has a two-step workflow:
 
-2.  **Prepare Your Data:**
-    The script expects image files to be present to run the data loading part.
+1.  **Train a Model:** First, you must run `main.ts` to create a (simulated) model file. This file is required by the crawler.
+2.  **Crawl with the Model:** Once the model file exists, you can run `crawl.ts` to find conceptual coincidences on the web.
+
+---
+
+## How to Use
+
+The project now has two main scripts: `main.ts` for training and `crawl.ts` for web crawling.
+
+### 1. Training a Model (`main.ts`)
+
+This script trains a (simulated) model based on the images you provide.
+
+**Usage:**
+```bash
+deno run -A main.ts --name="<model_name>" [--binaryConceptFolder="<path_to_data>"]
+```
+
+**Train like:**
+```bash
+deno run -A main.ts --name="this-person-doesnt-exists" --binaryConceptFolder="data/this-person-doesnt-exists"
+```
+
+-   `--name`: (Required) The name for your model (e.g., "Faces", "Cars"). This determines the filename of the saved model (`models/Faces.json`) and the default data directory.
+-   `--binaryConceptFolder`: (Optional) The path to the parent folder containing your `concept` and `no-concept` subfolders.
+
+**Scenarios:**
+
+*   **To create a new model and data structure:**
+    Omit the `--binaryConceptFolder` flag. The script will create a data directory for you and exit, prompting you to add images.
     ```bash
-    # Run from the root of the `isthereyouinimg` directory
-    mkdir -p deno/data/concept deno/data/no-concept
+    deno run -A main.ts --name="Faces"
+    # Output: Prompts you to add images to 'data/Faces/'
     ```
-    -   Add images containing the concept to `deno/data/concept`.
-    -   Add images not containing the concept to `deno/data/no-concept`.
 
-3.  **Run the Application:**
-    Navigate to the project's root directory (`isthereyouinimg`) and use the `deno run` command. You must provide permissions for the script to read files, write the simulated model, and access network for downloading modules.
-
+*   **To train with existing data:**
+    Provide the path to your data folder.
     ```bash
-    deno run --allow-read --allow-write --allow-net deno/main.ts
+    # Assuming you have images in 'data/Faces/concept' and 'data/Faces/no-concept'
+    deno run -A main.ts --name="Faces" --binaryConceptFolder="data/Faces"
     ```
 
-4.  **Customizing the Run:**
-    You can pass command-line flags to customize the simulated process:
-    ```bash
-    # Example: Run for 20 epochs with a different model path
-    deno run --allow-read --allow-write --allow-net deno/main.ts --epochs=20 --modelPath=models/my_sim_model.json
+### 2. Crawling for Coincidences (`crawl.ts`)
 
-    # Example: Run a simulated prediction on a dummy file path
-    deno run --allow-read --allow-write --allow-net deno/main.ts --predictImage=./deno/data/concept/some_image.jpg
+This script crawls a given URL, runs predictions on all found images using a specified model, and saves any matches.
 
-### Test 1: desired result => 1
-```
-deno run -A main.ts --predictImage=./extra/concept.jpeg
+**Usage:**
+```bash
+deno run -A crawl.ts --name="<model_name>" --crawl="<url_to_crawl>"
 ```
 
-### Test 1: desired result => 0
+-   `--name`: (Required) The name of the trained model you want to use for predictions.
+-   `--crawl`: (Required) The full URL of the website you want to scan for images.
+
+**Example:**
+```bash
+deno run -A crawl.ts --name="this-person-doesnt-exists" --crawl="https://this-person-does-not-exist.com/"
 ```
-deno run -A main.ts --predictImage=./extra/no-concept.jpeg
-```
+This command will:
+1.  Load the `models/Faces.json` predictor.
+2.  Fetch and parse the HTML from the URL.
+3.  Run a (simulated) prediction on every image found.
+4.  If an image gets a `1` (match), it will be downloaded to `data/Faces/coincidences/`.
+5.  A log of all matches will be saved to `data/Faces/triggers.json`.
