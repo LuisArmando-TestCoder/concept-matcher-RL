@@ -2,6 +2,8 @@
 [INFO] Arquitectura del modelo cargada exitosamente.
 [INFO] Haciendo crawling en: https://this-person-does-not-exist.com/
 [INFO] Se encontraron 53 imágenes.
+[INFO] ¡Coincidencia encontrada!: https://this-person-does-not-exist.com/img/avatar-gend80a015fc7544e370e593d2373e97529.jpg
 [INFO] ¡Coincidencia encontrada!: https://this-person-does-not-exist.com/static/images/fake-1.jpg
 [INFO] ¡Coincidencia encontrada!: https://this-person-does-not-exist.com/static/images/fake-2.jpg
-[INFO] Se guardaron 2 coincidencias en 'data/this-person-doesnt-exists/triggers.json'.
+[INFO] ¡Coincidencia encontrada!: https://this-person-does-not-exist.com/static/images/fake-3.jpg
+[INFO] Se guardaron 4 coincidencias en 'data/this-person-doesnt-exists/triggers.json'.
